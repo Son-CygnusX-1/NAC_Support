@@ -2,8 +2,11 @@
 Đây là tài liệu ghi lại các sự cố và cách khắc phục sự cố thường gặp trong quá trình vận hành hệ thống Kiểm soát truy cập mạng. Một dự án của ngân hàng MSB
 
  [1. Quy trình khi gặp lỗi](#Quy_trinh)
+ 
  [2. Các lỗi thường gặp](#Loi)
+ 
  [3. Các lệnh cần lưu ý](#Lenh)
+ 
 <a name="Quy_trinh"></a>
 ### 1. Quy trình khi gặp lỗi
 Khi nhận được lỗi từ người dùng
