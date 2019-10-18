@@ -15,11 +15,13 @@ B2: Kiểm tra trên switch và router
 B3: Kiểm tra lỗi phía người dùng (Gọi điện thoại)
 #### 1.1 Kiểm tra trên ISE [https://10.1.4.140](https://10.1.4.140/) trong phần Log xem trạng thái của người dùng đó như thế nào
 * Nếu lỗi báo đỏ, chủ yếu trường hợp này là do người dùng đổi mật khẩu nhưng không restart máy để xác nhận mật khẩu mới, dẫn đến không xác thực được người dùng trên hệ thống. Làm cho cổng mạng đó bị chuyển sang vlan 150.
-** Khắc phục: bảo người dùng restart lại máy để nhập mật khẩu mới. Nếu không được thì Bypass cổng người dùng để người dùng có mạng để có thể login bằng mật khẩu mới. Sau khi người dùng login được vào máy bằng mật khẩu mới thì cấu hình lại dot1x trên cổng đó bằng lệnh `dot1x port-control auto`
+	* Khắc phục: bảo người dùng restart lại máy để nhập mật khẩu mới. Nếu không được thì Bypass cổng người dùng để người dùng có mạng để có thể login bằng mật khẩu mới. Sau khi người dùng login được vào máy bằng mật khẩu mới thì cấu hình lại dot1x trên cổng đó bằng lệnh `dot1x port-control auto`
 * Nếu lỗi báo `NotApplicate` người dùng bị chuyển sang vlan cách ly. Trường hợp này xảy ra khi có lỗi trong quá trình xác thực người dùng hoặc lỗi do anyConnect.
-** Khắc phục: shut/no shut cổng mạng người dùng (Có thể lặp lại 2-3 lần nếu không được). Nếu không được có thể do lỗi file xml hoặc do người dùng chưa cài AnyConnect. Nếu cách trên không được, tạm thời ByPass công để người dùng có mạng, sau đó sử dụng [lệnh check](#comman1) để kiểm tra. Nếu máy đó đã cài anyconnect, đẩy lại file xml bằng [lệnh đẩy file xml](#comman2). Nếu máy đó chưa cài anyconnect, sử dụng [lệnh cài AnyConnect](#comman3) để cài AnyConnect.
-*	Nếu báo `Complient` Nhưng khi kiểm tra trên switch vẫn đang là Vlan 100 hoặc 150. Lỗi này xảy ra khi con switch lỗi không nhận được lệnh chuyển vlan từ ISE đẩy xuống.
-** Khắc phục shut/no shut cổng mạng người dùng. Bypass công và cấu hình lại. Bảo người dùng restart lại máy tính.
+	* Khắc phục: shut/no shut cổng mạng người dùng (Có thể lặp lại 2-3 lần nếu không được). Nếu không được có thể do lỗi file xml hoặc do người dùng chưa cài AnyConnect. Nếu cách trên không được, tạm thời ByPass công để người dùng có mạng, sau đó sử dụng [lệnh check](#comman1) để kiểm tra. Nếu máy đó đã cài anyconnect, đẩy lại file xml bằng [lệnh đẩy file xml](#comman2). Nếu máy đó chưa cài anyconnect, sử dụng [lệnh cài AnyConnect](#comman3) để cài AnyConnect.
+* Nếu báo `Complient` Nhưng khi kiểm tra trên switch vẫn đang là Vlan 100 hoặc 150. Lỗi này xảy ra khi con switch lỗi không nhận được lệnh chuyển vlan từ ISE đẩy xuống.
+
+	* Khắc phục shut/no shut cổng mạng người dùng. Bypass công và cấu hình lại. Bảo người dùng restart lại máy tính.
+
 #### 1.2 Kiểm tra trên switch, router
 * Có thể do cổng mạng đó đang cấu hình sai hoặc do switch bị treo chuyển được vlan cho người dùng.
 
